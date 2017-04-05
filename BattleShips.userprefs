@@ -1,0 +1,12 @@
+﻿<Properties StartupItem="BattleShips.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Mac|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\MenuController.cs">
+    <Files>
+      <File FileName="src\MenuController.cs" Line="428" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
