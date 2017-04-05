@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 /// <summary>
 /// AIHardPlayer is a type of player. This AI will know directions of ships
 /// when it has found 2 ship tiles and will try to destroy that ship. If that ship
@@ -132,7 +135,7 @@ public class AIHardPlayer : AIPlayer
 					throw new ApplicationException("AI has gone in an invalid state");
 			}
 
-		} while (row < 0 || column < 0 || row >= EnemyGrid.Height || column >= EnemyGrid.Width || EnemyGrid.Item(row, column) != TileView.Sea); //while inside the grid and not a sea tile do the search
+		} while (row < 0 || column < 0 || row >= EnemyGrid.Height || column >= EnemyGrid.Width || EnemyGrid[row, column] != TileView.Sea); //while inside the grid and not a sea tile do the search
 	}
 
 	/// <summary>
@@ -388,7 +391,7 @@ public class AIHardPlayer : AIPlayer
 	private void AddTarget(int row, int column)
 	{
 
-		if (row >= 0 && column >= 0 && row < EnemyGrid.Height && column < EnemyGrid.Width && EnemyGrid.Item(row, column) == TileView.Sea)
+		if (row >= 0 && column >= 0 && row < EnemyGrid.Height && column < EnemyGrid.Width && EnemyGrid[row, column] == TileView.Sea)
 		{
 
 			_Targets.Push(new Target(new Location(row, column), _CurrentTarget.ShotAt));

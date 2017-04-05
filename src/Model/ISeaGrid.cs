@@ -6,9 +6,16 @@
 /// </summary>
 public interface ISeaGrid
 {
-
+	/// <summary>
+	/// Gets the width.
+	/// </summary>
+	/// <value>The width.</value>
 	int Width {get;}
 
+	/// <summary>
+	/// Gets the height.
+	/// </summary>
+	/// <value>The height.</value>
 	int Height {get;}
 
 	/// <summary>
@@ -23,9 +30,7 @@ public interface ISeaGrid
 	/// <param name="column">the column to access</param>
 	/// <value>what the player can see at that location</value>
 	/// <returns>what the player can see at that location</returns>
-//INSTANT C# NOTE: C# does not support parameterized properties - the following property has been rewritten as a function:
-//ORIGINAL LINE: ReadOnly Property Item(ByVal row As Integer, ByVal column As Integer) As TileView
-	TileView get_Item(int row, int column);
+	TileView this [int row, int column] {  get;  }
 
 	/// <summary>
 	/// Mark the indicated tile as shot.

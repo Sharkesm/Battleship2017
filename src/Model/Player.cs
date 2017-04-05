@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections; 
+using System.Collections.Generic; 
 
 /// <summary>
 /// Player has its own _PlayerGrid, and can see an _EnemyGrid, it can also check if
 /// all ships are deployed and if all ships are detroyed. A Player can also attach.
 /// </summary>
-public class Player : IEnumerable<Ship>
+public class Player : IEnumerable<Ship> 
 {
 	private bool InstanceFieldsInitialized = false;
 
@@ -14,11 +16,19 @@ public class Player : IEnumerable<Ship>
 		_playerGrid = new SeaGrid(_Ships);
 	}
 
+
+	/// <summary>
+	/// The random.
+	/// </summary>
 	protected static Random _Random = new Random();
 
 	private Dictionary<ShipName, Ship> _Ships;
 	private SeaGrid _playerGrid;
 	private ISeaGrid _enemyGrid;
+
+	/// <summary>
+	/// The game.
+	/// </summary>
 	protected BattleShipsGame _game;
 
 	private int _shots;
@@ -54,6 +64,12 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="T:Player"/> class.
+	/// </summary>
+	/// <param name="controller">Controller.</param>
+	/// 
 	public Player(BattleShipsGame controller)
 	{
 		if (!InstanceFieldsInitialized)
@@ -73,6 +89,7 @@ public class Player : IEnumerable<Ship>
 		}
 
 		RandomizeDeployment();
+
 	}
 
 	/// <summary>
@@ -112,6 +129,11 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+
+	/// <summary>
+	/// Gets a value indicating whether this <see cref="T:Player"/> is destroyed.
+	/// </summary>
+	/// <value><c>true</c> if is destroyed; otherwise, <c>false</c>.</value>
 	public bool IsDestroyed
 	{
 		get
@@ -128,16 +150,14 @@ public class Player : IEnumerable<Ship>
 	/// <value>The ship</value>
 	/// <returns>The ship with the indicated name</returns>
 	/// <remarks>The none ship returns nothing/null</remarks>
-//INSTANT C# NOTE: C# does not support parameterized properties - the following property has been rewritten as a function:
-//ORIGINAL LINE: Public ReadOnly Property Ship(ByVal name As ShipName) As Ship
-	public Ship get_Ship(ShipName name)
+	public Ship Ship(ShipName name)
 	{
 		if (name == ShipName.None)
 		{
 			return null;
 		}
 
-		return _Ships.Item(name);
+		return _Ships [name]; 
 	}
 
 	/// <summary>
@@ -153,6 +173,11 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+
+	/// <summary>
+	/// Gets the hits.
+	/// </summary>
+	/// <value>The hits.</value>
 	public int Hits
 	{
 		get
@@ -174,6 +199,11 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+
+	/// <summary>
+	/// Gets the score.
+	/// </summary>
+	/// <value>The score.</value>
 	public int Score
 	{
 		get
@@ -189,15 +219,24 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+
+
 	/// <summary>
 	/// Makes it possible to enumerate over the ships the player
 	/// has.
 	/// </summary>
 	/// <returns>A Ship enumerator</returns>
-	IEnumerator<Ship> IEnumerable<Ship>.GetEnumerator()
+	IEnumerator IEnumerable.GetEnumerator ()
 	{
 		return this.GetShipEnumerator();
 	}
+
+
+	/// <summary>
+	/// Gets the ship enumerator.
+	/// </summary>
+	/// <returns>The ship enumerator.</returns>
+	/// 
 	public IEnumerator<Ship> GetShipEnumerator()
 	{
 		Ship[] result = new Ship[_Ships.Values.Count + 1];
@@ -213,7 +252,7 @@ public class Player : IEnumerable<Ship>
 	/// has.
 	/// </summary>
 	/// <returns>A Ship enumerator</returns>
-	public IEnumerator GetEnumerator()
+	public IEnumerator<Ship> GetEnumerator()
 	{
 		Ship[] result = new Ship[_Ships.Values.Count + 1];
 		_Ships.Values.CopyTo(result, 0);
@@ -257,6 +296,10 @@ public class Player : IEnumerable<Ship>
 		return result;
 	}
 
+
+	/// <summary>
+	/// Randomizes the deployment.
+	/// </summary>
 	public virtual void RandomizeDeployment()
 	{
 		bool placementSuccessful = false;
