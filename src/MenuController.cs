@@ -140,8 +140,7 @@ static class MenuController
 	public static void DrawMainMenu()
 	{
 		//Clears the Screen to Black
-		//SwinGame.DrawText("Main Menu", Color.White, GameFont("ArialLarge"), 50, 50)
-
+		SwinGame.DrawText ("Main Menu", Color.White, GameResources.GameFont ("ArialLarge"), 50, 50); 
 		DrawButtons(MAIN_MENU);
 	}
 
