@@ -2,6 +2,10 @@
 using SwinGameSDK;
 using System.Collections.Generic;
 
+
+/// <summary>
+/// Game resources.
+/// </summary>
 public static class GameResources
 {
 	/// <summary>
@@ -53,11 +57,12 @@ public static class GameResources
 		NewSound("Error", "error.wav");
 		NewSound("Hit", "hit.wav");
 		NewSound("Sink", "sink.wav");
-		//NewSound("Siren", "siren.wav");
 		NewSound("Miss", "watershot.wav");
 		NewSound("Winner", "winner.wav");
 		NewSound("Lose", "lose.wav");
 	}
+
+
 	/// <summary>
 	/// Loads the music.
 	/// </summary>
@@ -137,7 +142,7 @@ public static class GameResources
 
 		SwinGame.ChangeScreenSize(800, 600);
 
-		ShowLoadingScreen();
+		ShowLoadingScreen(); // Showing loading screen 
 
 		ShowMessage("Loading fonts...", 0);
 		LoadFonts();
@@ -158,6 +163,7 @@ public static class GameResources
 		SwinGame.Delay(100);
 		ShowMessage("Game loaded...", 5);
 		SwinGame.Delay(100);
+
 		EndLoadingScreen(width, height);
 	}
 
@@ -184,7 +190,7 @@ public static class GameResources
 
 
 	/// <summary>
-	/// Plaies the swin game intro.
+	/// Plays the swin game intro.
 	/// </summary>
 	private static void PlaySwinGameIntro()
 	{
@@ -229,7 +235,7 @@ public static class GameResources
 
 		int fullW = 260 * number / STEPS;
 
-		SwinGame.DrawBitmap(_LoaderEmpty, BG_X, BG_Y);
+		SwinGame.DrawBitmap(_LoaderEmpty, BG_X, BG_Y);   
 		SwinGame.DrawBitmapPart(_LoaderFull, 0, 0, fullW, 66, BG_X, BG_Y);
 
 		SwinGame.DrawTextLines(message, Color.White, Color.Transparent, _LoadingFont, FontAlignment.AlignCenter, TX, TY, TW, TH);
@@ -249,12 +255,7 @@ public static class GameResources
 		SwinGame.Delay(500);
 		SwinGame.ClearScreen();
 		SwinGame.RefreshScreen();
-		SwinGame.FreeFont(_LoadingFont);
-		SwinGame.FreeBitmap(_Background);
-		SwinGame.FreeBitmap(_Animation);
-		SwinGame.FreeBitmap(_LoaderEmpty);
-		SwinGame.FreeBitmap(_LoaderFull);
-		Audio.FreeSoundEffect(_StartSound);
+		FreeCurrentResource(); 
 		SwinGame.ChangeScreenSize(width, height);
 	}
 
@@ -327,8 +328,6 @@ public static class GameResources
 	/// </summary>
 	private static void FreeFonts()
 	{
-//INSTANT C# NOTE: Commented this declaration since looping variables in 'foreach' loops are declared in the 'foreach' header in C#:
-//		Font obj = null;
 		foreach (Font obj in _Fonts.Values)
 		{
 			SwinGame.FreeFont(obj);
@@ -368,8 +367,25 @@ public static class GameResources
 		}
 	}
 
+
+
 	/// <summary>
-	/// Frees the resources.
+	/// Frees the current resources.
+	/// </summary>
+	private static void FreeCurrentResource() 
+	{
+
+		SwinGame.FreeFont (_LoadingFont);
+		SwinGame.FreeBitmap (_Background);
+		SwinGame.FreeBitmap (_Animation);
+		SwinGame.FreeBitmap (_LoaderEmpty);
+		SwinGame.FreeBitmap (_LoaderFull);
+		Audio.FreeSoundEffect (_StartSound);
+	}
+
+
+	/// <summary>
+	/// Frees all resources.
 	/// </summary>
 	public static void FreeResources()
 	{
@@ -377,6 +393,6 @@ public static class GameResources
 		FreeImages();
 		FreeMusic();
 		FreeSounds();
-		SwinGame.ProcessEvents();
+		SwinGame.ProcessEvents ();
 	}
 }
