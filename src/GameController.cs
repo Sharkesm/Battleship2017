@@ -26,10 +26,7 @@ public static class GameController
 	/// <returns>The current state</returns>
 	public static GameState CurrentState
 	{
-		get
-		{
-			return _state.Peek();
-		}
+		get { return _state.Peek(); }
 	}
 
 	/// <summary>
@@ -40,9 +37,7 @@ public static class GameController
 	public static Player HumanPlayer
 	{
 		get
-		{
-			return _human;
-		}
+		{ return _human; }
 	}
 
 	/// <summary>
@@ -53,11 +48,13 @@ public static class GameController
 	public static Player ComputerPlayer
 	{
 		get
-		{
-			return _ai;
-		}
+		{ return _ai; }
 	}
 
+
+	/// <summary>
+	/// Initializes the <see cref="T:GameController"/> class.
+	/// </summary>
 	static GameController()
 	{
 		//bottom state will be quitting. If player exits main menu then the game is over
