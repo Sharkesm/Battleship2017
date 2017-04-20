@@ -33,8 +33,8 @@ public static class GameResources
 
 		//Ships
 		int i = 0;
-for (i = 1; i <= 5; i++)
-{
+		for (i = 1; i <= 5; i++)
+		{
 			NewImage("ShipLR" + i, "ship_deploy_horiz_" + i + ".png");
 			NewImage("ShipUD" + i, "ship_deploy_vert_" + i + ".png");
 		}
@@ -53,7 +53,7 @@ for (i = 1; i <= 5; i++)
 		NewSound("Error", "error.wav");
 		NewSound("Hit", "hit.wav");
 		NewSound("Sink", "sink.wav");
-		NewSound("Siren", "siren.wav");
+		//NewSound("Siren", "siren.wav");
 		NewSound("Miss", "watershot.wav");
 		NewSound("Winner", "winner.wav");
 		NewSound("Lose", "lose.wav");
