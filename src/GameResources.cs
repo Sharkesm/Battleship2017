@@ -340,8 +340,6 @@ for (i = 1; i <= 5; i++)
 	/// </summary>
 	private static void FreeImages()
 	{
-//INSTANT C# NOTE: Commented this declaration since looping variables in 'foreach' loops are declared in the 'foreach' header in C#:
-//		Bitmap obj = null;
 		foreach (Bitmap obj in _Images.Values)
 		{
 			SwinGame.FreeBitmap(obj);
@@ -353,8 +351,6 @@ for (i = 1; i <= 5; i++)
 	/// </summary>
 	private static void FreeSounds()
 	{
-//INSTANT C# NOTE: Commented this declaration since looping variables in 'foreach' loops are declared in the 'foreach' header in C#:
-//		SoundEffect obj = null;
 		foreach (SoundEffect obj in _Sounds.Values)
 		{
 			Audio.FreeSoundEffect(obj);
@@ -366,8 +362,6 @@ for (i = 1; i <= 5; i++)
 	/// </summary>
 	private static void FreeMusic()
 	{
-//INSTANT C# NOTE: Commented this declaration since looping variables in 'foreach' loops are declared in the 'foreach' header in C#:
-//		Music obj = null;
 		foreach (Music obj in _Music.Values)
 		{
 			Audio.FreeMusic(obj);

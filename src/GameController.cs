@@ -84,20 +84,14 @@ public static class GameController
 		_theGame = new BattleShipsGame();
 
 		//create the players
-//INSTANT C# NOTE: The following VB 'Select Case' included either a non-ordinal switch expression or non-ordinal, range-type, or non-constant 'Case' expressions and was converted to C# 'if-else' logic:
-//		Select Case _aiSetting
-//ORIGINAL LINE: Case AIOption.Medium
 		if (_aiSetting == AIOption.Medium)
 		{
 			_ai = new AIMediumPlayer(_theGame);
 		}
-//ORIGINAL LINE: Case AIOption.Hard
-		else if (_aiSetting == AIOption.Hard)
+		else if (_aiSetting == AIOption.Hard) 
 		{
 			_ai = new AIHardPlayer(_theGame);
-		}
-//ORIGINAL LINE: Case Else
-		else
+		}else
 		{
 			_ai = new AIHardPlayer(_theGame);
 		}
@@ -179,16 +173,12 @@ public static class GameController
 			UtilityFunctions.Message = "The AI " + result.ToString();
 		}
 
-//INSTANT C# NOTE: The following VB 'Select Case' included either a non-ordinal switch expression or non-ordinal, range-type, or non-constant 'Case' expressions and was converted to C# 'if-else' logic:
-//		Select Case result.Value
-//ORIGINAL LINE: Case ResultOfAttack.Destroyed
 		if (result.Value == ResultOfAttack.Destroyed)
 		{
 			PlayHitSequence(result.Row, result.Column, isHuman);
 			Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
 
 		}
-//ORIGINAL LINE: Case ResultOfAttack.GameOver
 		else if (result.Value == ResultOfAttack.GameOver)
 		{
 			PlayHitSequence(result.Row, result.Column, isHuman);
@@ -210,17 +200,14 @@ public static class GameController
 			}
 
 		}
-//ORIGINAL LINE: Case ResultOfAttack.Hit
 		else if (result.Value == ResultOfAttack.Hit)
 		{
 			PlayHitSequence(result.Row, result.Column, isHuman);
 		}
-//ORIGINAL LINE: Case ResultOfAttack.Miss
 		else if (result.Value == ResultOfAttack.Miss)
 		{
 			PlayMissSequence(result.Row, result.Column, isHuman);
 		}
-//ORIGINAL LINE: Case ResultOfAttack.ShotAlready
 		else if (result.Value == ResultOfAttack.ShotAlready)
 		{
 			Audio.PlaySoundEffect(GameResources.GameSound("Error"));
@@ -280,9 +267,6 @@ public static class GameController
 	/// to the AI player.</remarks>
 	private static void CheckAttackResult(AttackResult result)
 	{
-//INSTANT C# NOTE: The following VB 'Select Case' included either a non-ordinal switch expression or non-ordinal, range-type, or non-constant 'Case' expressions and was converted to C# 'if-else' logic:
-//		Select Case result.Value
-//ORIGINAL LINE: Case ResultOfAttack.Miss
 		if (result.Value == ResultOfAttack.Miss)
 		{
 			if (_theGame.Player == ComputerPlayer)
@@ -290,7 +274,6 @@ public static class GameController
 				AIAttack();
 			}
 		}
-//ORIGINAL LINE: Case ResultOfAttack.GameOver
 		else if (result.Value == ResultOfAttack.GameOver)
 		{
 			SwitchState(GameState.EndingGame);
