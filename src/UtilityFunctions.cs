@@ -230,6 +230,12 @@ static class UtilityFunctions
 
 	public static void DrawBackground()
 	{
+		/// <summary>
+		/// FullScreen when press F
+		/// </summary>
+		if (SwinGame.KeyTyped (KeyCode.vk_f)) {
+			SwinGame.ToggleFullScreen ();
+		}
 		switch (GameController.CurrentState) {
 			case GameState.ViewingMainMenu:
 			case GameState.ViewingGameMenu:
@@ -240,7 +246,14 @@ static class UtilityFunctions
 				break;
 			case GameState.Discovering:
 			case GameState.EndingGame:
-				SwinGame.DrawBitmap(GameResources.GameImage("Discovery"), 0, 0);
+				if (SwinGame.KeyTyped (KeyCode.vk_9)) {
+				SwinGame.DrawBitmap (GameResources.GameImage ("SeaFire"), 0, 0);
+			} else if (SwinGame.KeyTyped (KeyCode.vk_0)) {
+				SwinGame.DrawBitmap (GameResources.GameImage ("Ring"), 0, 0);
+			} else {
+				SwinGame.DrawBitmap (GameResources.GameImage ("Discovery"), 0, 0);
+			}
+			// Adding the changes made when press 9 or 0 to change the background display
 				break;
 			case GameState.Deploying:
 			SwinGame.DrawBitmap(GameResources.GameImage("Deploy"), 0, 0);
