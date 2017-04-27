@@ -136,6 +136,12 @@ public static class GameController
 		SwinGame.RefreshScreen();
 	}
 
+	/// <summary>
+	/// When the player hit the ship, it will add the animation and the sound
+	/// </summary>
+	/// <param name="row">Row.</param>
+	/// <param name="column">Column.</param>
+	/// <param name="showAnimation">If set to <c>true</c> show animation.</param>
 	private static void PlayHitSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation)
@@ -148,6 +154,12 @@ public static class GameController
 		UtilityFunctions.DrawAnimationSequence();
 	}
 
+	/// <summary>
+	/// When the player miss the shot, it will play the animation and sound
+	/// </summary>
+	/// <param name="row">Row.</param>
+	/// <param name="column">Column.</param>
+	/// <param name="showAnimation">If set to <c>true</c> show animation.</param>
 	private static void PlayMissSequence(int row, int column, bool showAnimation)
 	{
 		if (showAnimation)

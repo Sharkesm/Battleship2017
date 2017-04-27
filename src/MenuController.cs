@@ -110,6 +110,9 @@ static class MenuController
 		}
 	}
 
+	/// <summary>
+	/// Handles the BGM Menu input.
+	/// </summary>
 	public static void HandleBGMMenuInput ()
 	{
 		bool handled = false;
@@ -200,6 +203,9 @@ static class MenuController
 		DrawButtons(SETUP_MENU, 1, 1);
 	}
 
+	/// <summary>
+	/// Draws the BGM Settings.
+	/// </summary>
 	public static void DrawBGMSettings ()
 	{
 		//Clears the Screen to Black
@@ -353,7 +359,6 @@ static class MenuController
 		GameController.EndCurrentState();
 	}
 
-
 	/// <summary>
 	/// Stops the BGM music.
 	/// </summary>
@@ -363,6 +368,9 @@ static class MenuController
 
 	/// <summary>
 	/// Performs the BGM menu action.
+
+	/// <summary>
+	/// Performs the BGM Menu action of different sounds
 	/// </summary>
 	/// <param name="button">Button.</param>
 	private static void PerformBGMMenuAction (int button)
@@ -426,7 +434,9 @@ static class MenuController
 		}
 	}
 
-
+	/// <summary>
+	/// added new feature for muting the game
+	/// </summary>
 	private static void Mute ()
 	{
 		if (isMute == false) {
