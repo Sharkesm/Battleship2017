@@ -13,6 +13,7 @@ public static class GameResources
 	/// </summary>
 	private static void LoadFonts()
 	{
+		NewFont ("Arial", "arial.ttf", 15);
 		NewFont("ArialLarge", "arial.ttf", 80);
 		NewFont("Courier", "cour.ttf", 14);
 		NewFont("CourierSmall", "cour.ttf", 8);
@@ -63,12 +64,16 @@ public static class GameResources
 	}
 
 
+
+
 	/// <summary>
 	/// Loads the music.
 	/// </summary>
-	private static void LoadMusic()
+private static void LoadMusic ()
 	{
-		NewMusic("Background", "horrordrone.mp3");
+		NewMusic ("Background", "horrordrone.mp3");
+		NewMusic ("BGM1", "Dragon-Mystry.mp3");
+		NewMusic ("BGM2", "RPG-Intro_v001.mp3");
 	}
 
 	/// <summary>
@@ -205,7 +210,7 @@ public static class GameResources
 		SwinGame.Delay(200);
 
 		int i = 0;
-		for (i = 0; i < ANI_CELL_COUNT; i++)
+		for (i = 0; i < ANI_CELL_COUNT-1; i++)
 		{
 			SwinGame.DrawBitmap(_Background, 0, 0);
 			SwinGame.DrawBitmapPart(_Animation, (i / ANI_V_CELL_COUNT) * ANI_W, (i % ANI_V_CELL_COUNT) * ANI_H, ANI_W, ANI_H, ANI_X, ANI_Y);
@@ -232,6 +237,7 @@ public static class GameResources
 		const int STEPS = 5;
 		const int BG_X = 279;
 		const int BG_Y = 453;
+
 
 		int fullW = 260 * number / STEPS;
 

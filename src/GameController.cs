@@ -301,6 +301,9 @@ public static class GameController
 			case GameState.AlteringSettings:
 				MenuController.HandleSetupMenuInput();
 				break;
+			case GameState.BGMSettings:
+			MenuController.HandleBGMMenuInput ();
+			break;
 			case GameState.Deploying:
 				DeploymentController.HandleDeploymentInput();
 				break;
@@ -339,6 +342,9 @@ public static class GameController
 			case GameState.AlteringSettings:
 				MenuController.DrawSettings();
 				break;
+			case GameState.BGMSettings:
+			MenuController.DrawBGMSettings ();
+			break;
 			case GameState.Deploying:
 				DeploymentController.DrawDeployment();
 				break;
