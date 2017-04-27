@@ -236,6 +236,7 @@ static class MenuController
 		btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * level;
 		int i = 0;
 		string s = "UNMUTE";
+
 		for (i = 0; i <= _menuStructure[menu].Length - 1; i++) {
 			int btnLeft = 0;
 			btnLeft = MENU_LEFT + BUTTON_SEP * (i + xOffset);
@@ -353,22 +354,36 @@ static class MenuController
 	}
 
 
+	/// <summary>
+	/// Stops the BGM music.
+	/// </summary>
+	public static void StopBGMMusic(){
+		Audio.StopMusic ();
+	}
+
+	/// <summary>
+	/// Performs the BGM menu action.
+	/// </summary>
+	/// <param name="button">Button.</param>
 	private static void PerformBGMMenuAction (int button)
 	{
 		switch (button) {
 		case BGM_MENU_1:
-			Audio.StopMusic ();
+///			Audio.StopMusic ();
+			SwinGame.StopMusic();
 			SwinGame.PlayMusic (GameResources.GameMusic ("Background"));
 			bgmPlaying = 1;
 			break;
 		case BGM_MENU_2:
-			Audio.StopMusic ();
-			SwinGame.FadeMusicIn (GameResources.GameMusic ("BGM1"), 3000);
+///			Audio.StopMusic ();
+			SwinGame.StopMusic();
+			SwinGame.FadeMusicIn (GameResources.GameMusic ("closer"), 3000);
 			bgmPlaying = 2;
 			break;
 		case BGM_MENU_3:
-			Audio.StopMusic ();
-			SwinGame.FadeMusicIn (GameResources.GameMusic ("BGM2"), 3000);
+///			Audio.StopMusic ();
+			SwinGame.StopMusic ();
+			SwinGame.FadeMusicIn (GameResources.GameMusic ("dice"), 3000);
 			bgmPlaying = 3;
 			break;
 		}
@@ -425,11 +440,11 @@ static class MenuController
 				isMute = false;
 				break;
 			case 2:
-				SwinGame.FadeMusicIn (GameResources.GameMusic ("BGM1"), 3000);
+				SwinGame.FadeMusicIn (GameResources.GameMusic ("closer"), 3000);
 				isMute = false;
 				break;
 			case 3:
-				SwinGame.FadeMusicIn (GameResources.GameMusic ("BGM2"), 3000);
+				SwinGame.FadeMusicIn (GameResources.GameMusic ("dice"), 3000);
 				isMute = false;
 				break;
 			}
