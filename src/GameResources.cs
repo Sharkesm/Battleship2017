@@ -30,8 +30,12 @@ public static class GameResources
 		//
 		NewImage ("Ring", "MANA.jpg");
 		NewImage ("SeaFire", "MONO.jpg");
+
 		// for background changing feature 
 		NewImage("Deploy", "deploy.jpg");
+
+		// for muting background music on run time 
+		NewImage("mute", "mute.png");
 
 		//Deployment
 		NewImage("LeftRightButton", "deploy_dir_button_horiz.png");
@@ -76,8 +80,8 @@ public static class GameResources
 private static void LoadMusic ()
 	{
 		NewMusic ("Background", "horrordrone.mp3");
-		NewMusic ("BGM1", "Dragon-Mystry.mp3");
-		NewMusic ("BGM2", "RPG-Intro_v001.mp3");
+		NewMusic ("closer", "closer.mp3");
+		NewMusic ("dice", "dice.mp3");
 	}
 
 	/// <summary>
