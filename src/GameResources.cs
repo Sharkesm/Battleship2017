@@ -27,6 +27,10 @@ public static class GameResources
 		//Backgrounds
 		NewImage("Menu", "main_page.jpg");
 		NewImage("Discovery", "discover.jpg");
+		//
+		NewImage ("Ring", "MANA.jpg");
+		NewImage ("SeaFire", "MONO.jpg");
+		// for background changing feature 
 		NewImage("Deploy", "deploy.jpg");
 
 		//Deployment
