@@ -25,7 +25,58 @@ internal static class DiscoveryController
 		{
 			DoAttack();
 		}
+
+
+
+		if (SwinGame.KeyTyped (KeyCode.vk_1)) {
+			PlayBackgroundMusic (1);
+		} else if (SwinGame.KeyTyped (KeyCode.vk_2)) {
+			PlayBackgroundMusic (2);
+		} else if (SwinGame.KeyTyped (KeyCode.vk_3)) {
+
+			PlayBackgroundMusic (3);
+		} else if (SwinGame.KeyTyped (KeyCode.vk_m)) {
+			PlayBackgroundMusic (0);
+		}
 	}
+
+
+
+
+
+	/// <summary>
+	/// Plaies the background music.
+	/// </summary>
+	/// <param name="playMusic">Play music.</param>
+	private static void PlayBackgroundMusic (int playMusic)
+	{
+
+
+		if (playMusic == 1) {
+			SwinGame.StopMusic ();
+			GameController.SetBackgroundMusic ("Background");
+			SwinGame.PlayMusic (GameResources.GameMusic ("Background"));
+		} else if (playMusic == 2) {
+			SwinGame.StopMusic ();
+
+			SwinGame.PlayMusic (GameResources.GameMusic ("closer"));
+		} else if (playMusic == 3) {
+			SwinGame.StopMusic ();
+			GameController.SetBackgroundMusic ("dice");
+			SwinGame.PlayMusic (GameResources.GameMusic ("dice"));
+		} else if (playMusic == 0) {
+			if (!GameController.isBackgroudMuted ()) {
+				SwinGame.StopMusic ();
+				GameController.SetBackgroundToMute (true);
+			} else {
+				SwinGame.PlayMusic (GameResources.GameMusic (GameController.getMusic));
+				GameController.SetBackgroundToMute (false);
+			}
+		}
+
+	}
+
+
 
 	/// <summary>
 	/// Attack the location that the mouse if over.
@@ -72,6 +123,8 @@ internal static class DiscoveryController
 		UtilityFunctions.DrawSmallField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer);
 		UtilityFunctions.DrawMessage();
 
+		SwinGame.DrawBitmap (GameResources.GameImage ("mute"), 668, 70);
+	
 		SwinGame.DrawText(GameController.HumanPlayer.Shots.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SHOTS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Hits.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
