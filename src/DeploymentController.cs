@@ -60,6 +60,28 @@ internal static class DeploymentController
 			GameController.HumanPlayer.RandomizeDeployment();
 		}
 
+
+		if (SwinGame.KeyTyped (KeyCode.vk_1))
+		{
+			PlayBackgroundMusic (1);
+		}
+		else if (SwinGame.KeyTyped (KeyCode.vk_2))
+		{
+			PlayBackgroundMusic (2);
+		}
+		else if (SwinGame.KeyTyped (KeyCode.vk_3))
+		{
+			
+			PlayBackgroundMusic (3);
+		}
+		else if (SwinGame.KeyTyped (KeyCode.vk_m))
+		{
+			PlayBackgroundMusic (0);
+		}
+
+
+
+
 		if (SwinGame.MouseClicked(MouseButton.LeftButton))
 		{
 			ShipName selected = GetShipMouseIsOver();
@@ -90,6 +112,51 @@ internal static class DeploymentController
 			}
 		}
 	}
+
+
+
+
+	/// <summary>
+	/// Plaies the background music.
+	/// </summary>
+	/// <param name="playMusic">Play music.</param>
+	private static void PlayBackgroundMusic(int playMusic){
+
+
+		if (playMusic == 1)
+		{
+			SwinGame.StopMusic (); 
+			GameController.SetBackgroundMusic ("Background");
+			SwinGame.PlayMusic (GameResources.GameMusic ("Background"));
+		}
+		else if (playMusic == 2)
+		{
+			SwinGame.StopMusic (); 
+			SwinGame.FadeMusicIn (GameResources.GameMusic ("closer"), 3000);	
+		}
+		else if (playMusic == 3)
+		{
+			SwinGame.StopMusic (); 
+			GameController.SetBackgroundMusic ("dice");
+			SwinGame.FadeMusicIn (GameResources.GameMusic ("dice"), 3000);
+		}
+		else if (playMusic == 0)
+		{
+			if (!GameController.isBackgroudMuted())
+			{
+				SwinGame.StopMusic ();
+				GameController.SetBackgroundToMute (true);
+			}
+			else
+			{
+				SwinGame.FadeMusicIn (GameResources.GameMusic (GameController.getMusic),3000);
+				GameController.SetBackgroundToMute (false);
+			}
+		}
+
+	}
+
+
 
 	/// <summary>
 	/// The user has clicked somewhere on the screen, check if its is a deployment and deploy
