@@ -13,10 +13,21 @@ public static class GameController
 	private static BattleShipsGame _theGame;
 	private static Player _human;
 	private static AIPlayer _ai;
-
+	private static String _Music = "Background";
 	private static Stack<GameState> _state = new Stack<GameState>();
-
+	private static Boolean _muteStatus = false; 
 	private static AIOption _aiSetting;
+
+	public static void SetBackgroundToMute(Boolean status){
+		_muteStatus = status;
+	}
+
+	public static Boolean isBackgroudMuted(){
+		return _muteStatus;
+	}
+	public static string getMusic {
+		get { return _Music; }
+	}
 
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
@@ -402,4 +413,8 @@ public static class GameController
 		_aiSetting = setting;
 	}
 
+
+	public static void SetBackgroundMusic(string name){
+		_Music = name;
+	}
 }
