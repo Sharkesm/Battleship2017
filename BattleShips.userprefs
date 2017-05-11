@@ -8,21 +8,15 @@
     <Files>
       <File FileName="src\Model\Player.cs" Line="1" Column="1" />
       <File FileName="src\DeploymentController.cs" Line="1" Column="1" />
-      <File FileName="src\Model\AIPlayer.cs" Line="1" Column="1" />
+      <File FileName="src\Model\AIPlayer.cs" Line="30" Column="5" />
+      <File FileName="src\GameController.cs" Line="1" Column="1" />
+      <File FileName="src\MenuController.cs" Line="1" Column="1" />
       <File FileName="Battleship2017 Status" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="BattleShips" expanded="True">
-            <Node name="BattleShips" expanded="True">
-              <Node name="src" expanded="True">
-                <Node name="Model" expanded="True">
-                  <Node name="AIPlayer.cs" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="BattleShips" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
