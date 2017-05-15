@@ -233,6 +233,22 @@ public class Player : IEnumerable<Ship>
 
 
 	/// <summary>
+	/// Ships the left.
+	/// </summary>
+	/// <returns>The left.</returns>
+	public string shipsLeft () 
+	{
+		int count = 0;
+		foreach (var s in _Ships) {
+			if (s.Value.Hits < s.Value.Size)
+				count++;
+		}
+		return "Enemy ships remaining: " + count.ToString ();
+	}
+
+
+
+	/// <summary>
 	/// Gets the ship enumerator.
 	/// </summary>
 	/// <returns>The ship enumerator.</returns>

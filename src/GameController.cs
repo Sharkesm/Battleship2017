@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading; 
 using System.Collections.Generic; 
 using SwinGameSDK;
 
@@ -14,15 +16,18 @@ public static class GameController
 	private static Player _human;
 	private static AIPlayer _ai;
 	private static String _Music = "Background";
-	private static Stack<GameState> _state = new Stack<GameState>();
-	private static Boolean _muteStatus = false; 
+	private static Stack<GameState> _state = new Stack<GameState> ();
+	private static Boolean _muteStatus = false;
 	private static AIOption _aiSetting;
+	private static Stopwatch stopWatch;
 
-	public static void SetBackgroundToMute(Boolean status){
+	public static void SetBackgroundToMute (Boolean status)
+	{
 		_muteStatus = status;
 	}
 
-	public static Boolean isBackgroudMuted(){
+	public static Boolean isBackgroudMuted ()
+	{
 		return _muteStatus;
 	}
 	public static string getMusic {
@@ -35,9 +40,8 @@ public static class GameController
 	/// </summary>
 	/// <value>The current state</value>
 	/// <returns>The current state</returns>
-	public static GameState CurrentState
-	{
-		get { return _state.Peek(); }
+	public static GameState CurrentState {
+		get { return _state.Peek (); }
 	}
 
 	/// <summary>
@@ -45,10 +49,8 @@ public static class GameController
 	/// </summary>
 	/// <value>the human player</value>
 	/// <returns>the human player</returns>
-	public static Player HumanPlayer
-	{
-		get
-		{ return _human; }
+	public static Player HumanPlayer {
+		get { return _human; }
 	}
 
 	/// <summary>
@@ -56,23 +58,21 @@ public static class GameController
 	/// </summary>
 	/// <value>the computer player</value>
 	/// <returns>the conputer player</returns>
-	public static Player ComputerPlayer
-	{
-		get
-		{ return _ai; }
+	public static Player ComputerPlayer {
+		get { return _ai; }
 	}
 
 
 	/// <summary>
 	/// Initializes the <see cref="T:GameController"/> class.
 	/// </summary>
-	static GameController()
+	static GameController ()
 	{
 		//bottom state will be quitting. If player exits main menu then the game is over
-		_state.Push(GameState.Quitting);
+		_state.Push (GameState.Quitting);
 
 		//at the start the player is viewing the main menu
-		_state.Push(GameState.ViewingMainMenu);
+		_state.Push (GameState.ViewingMainMenu);
 	}
 
 	/// <summary>
@@ -81,36 +81,48 @@ public static class GameController
 	/// <remarks>
 	/// Creates an AI player based upon the _aiSetting.
 	/// </remarks>
-	public static void StartGame()
+	public static void StartGame ()
 	{
-		if (_theGame != null)
-		{
-			EndGame();
+		if (_theGame != null) {
+			EndGame ();
 		}
 
 		//Create the game
-		_theGame = new BattleShipsGame();
+		_theGame = new BattleShipsGame ();
+
 
 		//create the players
-		if (_aiSetting == AIOption.Medium)
-		{
-			_ai = new AIMediumPlayer(_theGame);
-		}
-		else if (_aiSetting == AIOption.Hard) 
-		{
-			_ai = new AIHardPlayer(_theGame);
-		}else
-		{
-			_ai = new AIHardPlayer(_theGame);
+		if (_aiSetting == AIOption.Medium) {
+			_ai = new AIMediumPlayer (_theGame);
+		} else if (_aiSetting == AIOption.Hard) {
+			_ai = new AIHardPlayer (_theGame);
+		} else {
+			_ai = new AIHardPlayer (_theGame);
 		}
 
-		_human = new Player(_theGame);
+		_human = new Player (_theGame);
+
+		stopWatch = new Stopwatch ();
+		stopWatch.Start ();
 
 		//AddHandler _human.PlayerGrid.Changed, AddressOf GridChanged
 		_ai.PlayerGrid.Changed += GridChanged;
 		_theGame.AttackCompleted += AttackCompleted;
 
-		AddNewState(GameState.Deploying);
+		AddNewState (GameState.Deploying);
+	}
+
+
+	public static String TimeElapsed ()
+	{
+		return String.Format ("{0:hh\\:mm\\:ss}", stopWatch.Elapsed.ToString ());
+	}
+
+
+	public static String StopTimeElapsed () {
+
+		stopWatch.Stop (); 
+		return String.Format ("{0:hh\\:mm\\:ss}", stopWatch.Elapsed.ToString ());
 	}
 
 	/// <summary>

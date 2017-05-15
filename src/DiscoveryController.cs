@@ -110,6 +110,11 @@ internal static class DiscoveryController
 		const int SHOTS_TOP = 157;
 		const int HITS_TOP = 206;
 		const int SPLASH_TOP = 256;
+		const int TIMER_TOP = 306;
+		const int AI_SHIPS = 316;
+		const int AI_SHIPS_LEFT = 72;
+
+
 
 		if (((SwinGame.KeyDown(KeyCode.vk_LSHIFT) | SwinGame.KeyDown(KeyCode.vk_RSHIFT)) & SwinGame.KeyDown(KeyCode.vk_c)))
 		{
@@ -128,7 +133,8 @@ internal static class DiscoveryController
 		SwinGame.DrawText(GameController.HumanPlayer.Shots.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SHOTS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Hits.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
-
+		SwinGame.DrawText (GameController.TimeElapsed(), Color.White, GameResources.GameFont ("Menu"), AI_SHIPS_LEFT, TIMER_TOP); 
+		SwinGame.DrawText (GameController.ComputerPlayer.shipsLeft(), Color.White, GameResources.GameFont ("Menu"), AI_SHIPS_LEFT, AI_SHIPS);
 	}
 
 }
