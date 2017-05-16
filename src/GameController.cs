@@ -325,6 +325,15 @@ public static class GameController
 		//Read incoming input events
 		SwinGame.ProcessEvents();
 
+
+		if (SwinGame.KeyTyped (KeyCode.vk_F1)) {
+			SwinGame.ToggleFullScreen ();
+		}
+
+		if (SwinGame.KeyTyped (KeyCode.vk_F2)) {
+			SwinGame.TakeScreenshot ("screenshot");
+		}
+
 		switch (CurrentState)
 		{
 			case GameState.ViewingMainMenu:
